@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
-app.use(express.json);
+app.use(express.json());
 
-app.get("/", (req, res) => {
-   res.send("Bienvenue sur mon backend Node.js 🎉");
-});
+// import des routes
+const utilisateurRoutes = require("./routes/utilisateur.routes");
+app.use("/api/utilisateur", utilisateurRoutes);
+
+const welcomeRoutes = require("./routes/welcome.routes");
+app.use("/", welcomeRoutes);
 
 module.exports = app;
