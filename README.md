@@ -26,3 +26,4 @@ npm install sequelize pg pg-hstore
 
 7- Creation de notre premiere table postgres avec Sequelize , et mise en place du server render dans pgAdmin
 
+8- Creation de tous les tables necessaire et synchronisation dans pgAdmin
