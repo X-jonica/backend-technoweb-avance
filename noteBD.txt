@@ -1,5 +1,5 @@
 Ajout du server dans notre PGADMIN : dans le Host name on ne met pas l'URL complet on  met seulement  : 
- -❌ dpg-d0oaro3e5dus73ba4990-a.oregon-postgres.render.com ❌
+ -❌ postgresql://jonica:...@dpg-d0oaro3e5dus73ba4990-a.oregon-postgres.render.com/technoweb ❌
 
 plutot met juste : 
 - ✅ dpg-d0oaro3e5dus73ba4990-a.oregon-postgres.render.com ✅
