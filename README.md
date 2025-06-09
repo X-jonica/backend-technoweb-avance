@@ -27,3 +27,9 @@ npm install sequelize pg pg-hstore
 7- Creation de notre premiere table postgres avec Sequelize , et mise en place du server render dans pgAdmin
 
 8- Creation de tous les tables necessaire et synchronisation dans pgAdmin
+
+9- Installation de "multer" qui est une librairie pour gérer l’upload de fichiers
+
+```
+npm install multer
+```

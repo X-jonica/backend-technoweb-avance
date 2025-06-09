@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("./index");
+const sequelize = require("../db/index");
 
 const Chossure = sequelize.define(
    "Chossure",
@@ -27,11 +27,8 @@ const Chossure = sequelize.define(
       image_url: {
          type: DataTypes.TEXT,
       },
-      taille: {
-         type: DataTypes.STRING(10),
-      },
-      couleur: {
-         type: DataTypes.STRING(20),
+      autre_url: {
+         type: DataTypes.TEXT,
       },
    },
    {

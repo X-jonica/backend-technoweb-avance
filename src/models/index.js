@@ -1,25 +1,11 @@
-const { Sequelize } = require("sequelize");
-require("dotenv").config();
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../db"); // Connexion Sequelize
 
-// Acces au bd grace a sequelize 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-   dialect: "postgres",
-   dialectOptions: {
-      ssl: {
-         require: true,
-         rejectUnauthorized: false,
-      },
-   },
-});
+const db = {};
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-// Teste de connexion
-(async () => {
-   try {
-      await sequelize.authenticate();
-      console.log("✅ Connexion Sequelize réussie !");
-   } catch (error) {
-      console.error("❌ Échec de la connexion Sequelize :", error);
-   }
-})();
+// Déclaration des modèles
+db.Chossure = require("./Chossure");
 
-module.exports = sequelize;
+module.exports = db;
