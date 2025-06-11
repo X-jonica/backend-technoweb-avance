@@ -9,9 +9,12 @@ const Chossure = sequelize.define(
          primaryKey: true,
          autoIncrement: true,
       },
-      nom: {
+      marque: {
          type: DataTypes.STRING(20),
          allowNull: false,
+      },
+      nom: {
+         type: DataTypes.STRING(100),
       },
       description: {
          type: DataTypes.TEXT,

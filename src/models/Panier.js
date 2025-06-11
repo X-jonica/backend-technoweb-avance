@@ -9,14 +9,6 @@ const Panier = sequelize.define(
          primaryKey: true,
          autoIncrement: true,
       },
-      utilisateur_id: {
-         type: DataTypes.INTEGER,
-         allowNull: false,
-         references: {
-            model: "utilisateur",
-            key: "id",
-         },
-      },
       chossure_id: {
          type: DataTypes.INTEGER,
          allowNull: false,

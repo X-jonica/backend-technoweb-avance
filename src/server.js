@@ -2,10 +2,7 @@ const app = require("./app");
 const db = require('./models');
 const sequelize = require("./db");
 const Chossure = require("./models/Chossure");
-const Utilisateur = require("./models/Utilisateur");
 const Panier = require("./models/Panier");
-const Vente = require("./models/Vente");
-const VenteDetail = require("./models/VenteDetail");
 
 const PORT = process.env.PORT || 4000;
 
