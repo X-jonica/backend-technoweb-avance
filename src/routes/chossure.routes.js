@@ -4,8 +4,16 @@ const chossureController = require('../controllers/chossure.controller');
 
 /**
  * @swagger
+ * tags:
+ *   name: Chossure
+ *   description: Gestion des chossures
+ */
+
+/**
+ * @swagger
  * /api/chossures:
  *   get:
+ *     tags: [Chossure]
  *     summary: Récupérer toutes les chossures
  *     responses:
  *       200:
@@ -17,6 +25,7 @@ router.get('/', chossureController.getAll);
  * @swagger
  * /api/chossures/{id}:
  *   get:
+ *     tags: [Chossure]
  *     summary: Récupérer une chossure par ID
  *     parameters:
  *       - in: path

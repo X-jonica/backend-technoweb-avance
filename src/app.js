@@ -16,13 +16,13 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "API Chossure & Panier",
+      title: "API Chossure, Panier & Utilisateur",
       version: "1.0.0",
       description: "Documentation de l'API",
     },
     servers: [
       {
-        url: "https://grieving-tonie-x-jonica-0a1c8b87.koyeb.app", 
+        url: "https://grieving-tonie-x-jonica-0a1c8b87.koyeb.app",
       },
     ],
   },
@@ -41,5 +41,8 @@ app.use("/api/chossures", chossureRoutes);
 
 const panierRoutes = require("./routes/panier.routes");
 app.use("/api/panier", panierRoutes);
+
+const utilisateurRoutes = require("./routes/utilisateur.routes");
+app.use("/api/utilisateurs", utilisateurRoutes);
 
 module.exports = app;
