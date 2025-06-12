@@ -7,7 +7,7 @@ const Panier = require("./models/Panier");
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, async () => {
-    console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
+    console.log(`🚀 Serveur démarré sur https://grieving-tonie-x-jonica-0a1c8b87.koyeb.app`);
     try {
         await db.sequelize.sync(); //creer la table si elle n existe pas encore
         console.log("📦 Base de données synchronisée");
