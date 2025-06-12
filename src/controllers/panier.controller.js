@@ -59,9 +59,32 @@ exports.getPanier = async (req, res) => {
         });
 
         const message = "Données chossure recuperé avec succes !";
-        res.json(message, panier);
+        res.json(success(message, panier));
     } catch (error) {
         console.error("Erreur récupération panier:", error);
         res.status(500).json({ message: "Erreur serveur" });
     }
 };
+
+// Mettre à jour la quantité d'un produit dans le panier
+exports.mettreAJourQuantite = async (req, res) => {
+    const { id } = req.params;
+    const { quantite } = req.body;
+
+    try {
+        const item = await Panier.findByPk(id);
+        if (!item) {
+            return res.status(404).json({ message: "Article non trouvé dans le panier" });
+        }
+
+        // Mise à jour de la quantité
+        item.quantite = quantite;
+        await item.save();
+
+        res.json({ message: "Quantité mise à jour avec succès", data: item });
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour de la quantité:", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
