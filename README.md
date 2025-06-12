@@ -33,3 +33,9 @@ npm install sequelize pg pg-hstore
 ```
 npm install multer
 ```
+
+9- Installation de Swagger avec la commande ,
+
+```
+npm install swagger-ui-express swagger-jsdoc
+```
