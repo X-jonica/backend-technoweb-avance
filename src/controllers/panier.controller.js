@@ -6,27 +6,26 @@ const Chossure = db.Chossure;
 // Ajouter un produit au panier
 exports.ajouterAuPanier = async (req, res) => {
     const { utilisateur_id, chossure_id, quantite } = req.body;
-  
+
     try {
-      const produit = await Chossure.findByPk(chossure_id);
-      if (!produit) {
-        return res.status(404).json({ message: "Produit non trouvé" });
-      }
-  
-      const nouvelItem = await Panier.create({
-        utilisateur_id,
-        chossure_id,
-        quantite,
-      });
-  
-      const message = "Produit ajouté dans le panier ✅!";
-      res.json(success(message, nouvelItem));
+        const produit = await Chossure.findByPk(chossure_id);
+        if (!produit) {
+            return res.status(404).json({ message: "Produit non trouvé" });
+        }
+
+        const nouvelItem = await Panier.create({
+            utilisateur_id,
+            chossure_id,
+            quantite,
+        });
+
+        const message = "Produit ajouté dans le panier ✅!";
+        res.json(success(message, nouvelItem));
     } catch (error) {
-      console.error("Erreur ajout panier:", error);
-      res.status(500).json({ message: "Erreur serveur" });
+        console.error("Erreur ajout panier:", error);
+        res.status(500).json({ message: "Erreur serveur" });
     }
-  };
-  
+};
 
 // Supprimer un produit du panier par ID de l'item panier
 exports.supprimerDuPanier = async (req, res) => {
@@ -50,25 +49,28 @@ exports.supprimerDuPanier = async (req, res) => {
 
 // Récupérer le contenu du panier
 exports.getPanier = async (req, res) => {
-    const { utilisateur_id } = req.query;
-  
-    try {
-      const panier = await Panier.findAll({
-        where: { utilisateur_id },
-        include: {
-          model: Chossure,
-          attributes: ["nom", "marque", "prix", "image_url"],
-        },
-      });
-  
-      const message = "Panier récupéré avec succès ✅!";
-      res.json(success(message, panier));
-    } catch (error) {
-      console.error("Erreur récupération panier:", error);
-      res.status(500).json({ message: "Erreur serveur" });
+    const utilisateur_id = req.headers["utilisateur-id"];
+
+    if (!utilisateur_id) {
+        return res.status(400).json({ message: "Utilisateur non spécifié." });
     }
-  };
-  
+
+    try {
+        const panier = await Panier.findAll({
+            where: { utilisateur_id },
+            include: {
+                model: Chossure,
+                attributes: ["nom", "marque", "prix", "image_url"],
+            },
+        });
+
+        const message = "Panier récupéré avec succès ✅!";
+        res.json(success(message, panier));
+    } catch (error) {
+        console.error("Erreur récupération panier:", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
 
 // Mettre à jour la quantité d'un produit dans le panier
 exports.mettreAJourQuantite = async (req, res) => {
@@ -78,7 +80,9 @@ exports.mettreAJourQuantite = async (req, res) => {
     try {
         const item = await Panier.findByPk(id);
         if (!item) {
-            return res.status(404).json({ message: "Article non trouvé dans le panier" });
+            return res
+                .status(404)
+                .json({ message: "Article non trouvé dans le panier" });
         }
 
         // Mise à jour de la quantité
@@ -91,4 +95,3 @@ exports.mettreAJourQuantite = async (req, res) => {
         res.status(500).json({ message: "Erreur serveur" });
     }
 };
-

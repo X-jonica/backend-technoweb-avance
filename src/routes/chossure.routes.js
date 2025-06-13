@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const chossureController = require('../controllers/chossure.controller');
+const chossureController = require("../controllers/chossure.controller");
 
 /**
  * @swagger
@@ -19,7 +19,7 @@ const chossureController = require('../controllers/chossure.controller');
  *       200:
  *         description: Succès
  */
-router.get('/', chossureController.getAll);
+router.get("/", chossureController.getAll);
 
 /**
  * @swagger
