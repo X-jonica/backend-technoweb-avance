@@ -13,20 +13,20 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
 const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "API Chossure, Panier & Utilisateur",
-      version: "1.0.0",
-      description: "Documentation de l'API",
-    },
-    servers: [
-      {
-        url: "https://grieving-tonie-x-jonica-0a1c8b87.koyeb.app",
+   definition: {
+      openapi: "3.0.0",
+      info: {
+         title: "API Chossure, Panier & Utilisateur",
+         version: "1.0.0",
+         description: "Documentation de l'API",
       },
-    ],
-  },
-  apis: ["./src/routes/*.js"],
+      servers: [
+         {
+            url: "https://backend-technoweb-avance.onrender.com",
+         },
+      ],
+   },
+   apis: ["./src/routes/*.js"],
 };
 
 const specs = swaggerJsdoc(options);
